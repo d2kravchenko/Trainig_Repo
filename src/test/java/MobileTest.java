@@ -40,7 +40,7 @@ public class MobileTest {
         Assert.assertEquals(newProject, oldProject, "Projects data does not match" );
         searchScreen.clickProject();
         ProjectScreen projectScreen = new ProjectScreen();
-        int Days = DateUtils.getSecondsToDate(projectScreen.getFundDate());
+        int Days = DateUtils.getDaysToDate(projectScreen.getFundDate());
         AqualityServices.getLogger().info("Asserting that the number of days before the funding date is the same ");
         Assert.assertEquals(Integer.parseInt(oldProject.getDays()), Days, "The number of days from Popular screen does not match the number of days before the funding date");
     }

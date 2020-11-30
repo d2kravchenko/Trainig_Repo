@@ -10,9 +10,10 @@ public class SearchScreen extends Screen {
 
     public SearchScreen() {
         super(By.xpath("//android.view.ViewGroup[@resource-id = 'com.kickstarter.kickstarter:id/search_toolbar']"), "Search screen");
-
     }
 
+    private final int maxNameSize = 15;
+    private final String ATTRIBUTE_Text = "text";
     private final String XPATH_SearchTextBox = "//android.widget.EditText[@resource-id = 'com.kickstarter.kickstarter:id/search_edit_text']";
     private final String XPATH_Project = "//android.widget.LinearLayout[@resource-id = 'com.kickstarter.kickstarter:id/featured_search_result_view']";
     private final String ID_ProjectName = "project_name_text_view";
@@ -30,15 +31,15 @@ public class SearchScreen extends Screen {
     public mProject getProjectData(){
 
         mProject mp = new mProject();
-        mp.setName(projectName.getAttribute("text"));
-        mp.setPercent(projectPercent.getAttribute("text"));
-        mp.setDays(projectDays.getAttribute("text"));
-        mp.setTimeUnits(projectTimeUnits.getAttribute("text"));
+        mp.setName(projectName.getAttribute(ATTRIBUTE_Text));
+        mp.setPercent(projectPercent.getAttribute(ATTRIBUTE_Text));
+        mp.setDays(projectDays.getAttribute(ATTRIBUTE_Text));
+        mp.setTimeUnits(projectTimeUnits.getAttribute(ATTRIBUTE_Text));
         return mp;
     }
 
     public void search(String key){
-        int endIndex = key.indexOf(" ", 15);
+        int endIndex = key.indexOf(" ", maxNameSize);
         searchTextBox.clearAndType(key.substring(0, endIndex));  // Full name on popular page is longer then on search page, searching by part of name with space on end
 
     }
