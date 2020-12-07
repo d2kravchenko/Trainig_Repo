@@ -13,7 +13,6 @@ public class FileEditorScreen extends Screen {
         super(By.xpath("//android.widget.Button[@content-desc = 'Undo']"), "File Editor Screen");
     }
 
-    private final String ATTRIBUTE_TEXT = "text";
     private final String ID_EDITOR_TEXT_BOX = "text";
     private final String XPATH_UNDO_BUTTON = "//android.widget.Button[@content-desc = 'Undo']";
     private final String XPATH_CLOSE_BUTTON = "//android.widget.Button[@content-desc = 'Close']";
@@ -36,7 +35,7 @@ public class FileEditorScreen extends Screen {
         closeButton.click();
     }
     public String getText(){
-        return  editorTextBox.getAttribute(ATTRIBUTE_TEXT);
+        return  editorTextBox.getAttribute(ATTRIBUTE.TEXT);
     }
 
 }

@@ -1,8 +1,8 @@
 package screenObjects;
 
-import forms.AddFileForm;
-import forms.FileForm;
-import forms.SelectNameAndTemplateForm;
+import screenObjects.forms.AddFileForm;
+import screenObjects.forms.FileForm;
+import screenObjects.forms.SelectNameAndTemplateForm;
 import aquality.appium.mobile.application.AqualityServices;
 import aquality.appium.mobile.elements.interfaces.IButton;
 import aquality.appium.mobile.elements.interfaces.ILabel;
