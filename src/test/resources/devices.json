@@ -1,0 +1,14 @@
+{
+   "Android_Emulator": {
+    "capabilities": {
+      "deviceName": "Emulator_Android"
+    }
+  },
+  "Android_NAME": {
+    "capabilities": {
+      "deviceName": "Samsung",
+      "udid": "emulator-5554",
+      "systemPort": "4723"
+    }
+  }
+}
