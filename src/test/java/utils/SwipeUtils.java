@@ -7,11 +7,14 @@ import org.openqa.selenium.Point;
 public class SwipeUtils {
 
     public static void swipeToRightTab(){
-
+        double startPointX = 0.9;
+        double startPointY = 0.5;
+        double endPointX = 0.1;
+        double endPointY = 0.5;
         Dimension size = AqualityServices.getApplication().getDriver().manage().window().getSize();
-        Point p = new Point((int) (size.width * 0.9), (int) (size.height * 0.5));
-        Point p2 = new Point((int) (size.width * 0.1), (int) (size.height * 0.5));
-        AqualityServices.getTouchActions().swipe(p, p2);
+        Point startPoint = new Point((int) (size.width * startPointX), (int) (size.height * startPointY));
+        Point endPoint = new Point((int) (size.width * endPointX), (int) (size.height * endPointY));
+        AqualityServices.getTouchActions().swipe(startPoint, endPoint);
     }
 
 

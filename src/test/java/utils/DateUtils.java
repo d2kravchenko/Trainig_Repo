@@ -7,18 +7,18 @@ import java.util.Locale;
 
 public class DateUtils {
 
-    private static final int MillisInDayCount =  86400000;
-    private static final String ProjectDateFormat = "MMM dd, yyyy h:mm";
+    private static final int MILLIS_IN_DAY_COUNT =  86400000;
+    private static final String PROJECT_DATE_FORMAT = "MMM dd, yyyy h:mm";
 
     public static int getDaysToDate(String date){
         Date fundDate = null;
         Date today = new Date();
-        SimpleDateFormat format = new SimpleDateFormat(ProjectDateFormat, Locale.ENGLISH);
+        SimpleDateFormat format = new SimpleDateFormat(PROJECT_DATE_FORMAT, Locale.ENGLISH);
         try {
             fundDate = format.parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return (int) ((fundDate.getTime() - today.getTime()) / MillisInDayCount);
+        return (int) ((fundDate.getTime() - today.getTime()) / MILLIS_IN_DAY_COUNT);
     }
 }

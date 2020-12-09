@@ -1,4 +1,4 @@
-package Models;
+package models;
 
 import aquality.appium.mobile.application.AqualityServices;
 import lombok.*;
@@ -6,7 +6,7 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = {"name", "timeUnits"})
-public class mProject {
+public class ProjectModel {
 
     @Getter @Setter  private String name, percent, days;
     @Getter          private String timeUnits;

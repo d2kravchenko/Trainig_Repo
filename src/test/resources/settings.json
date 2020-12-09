@@ -8,10 +8,7 @@
       "deviceKey": "Android_Emulator",
       "applicationPath": ".\\src\\test\\resources\\app.apk",
       "capabilities": {
-        "platformName": "Android",
-        "automationName": "UiAutomator2",
-        "appPackage": "com.kickstarter.kickstarter",
-        "appActivity": "com.kickstarter.ui.activities.DiscoveryActivity"
+        "platformName": "Android"
       }
     },
     "ios": {
