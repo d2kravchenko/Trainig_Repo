@@ -1,16 +1,11 @@
-package Models;
+package models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-@EqualsAndHashCode
-@ToString
-@Getter @Setter
-public class mUserAdress {
+@Data
+public class MUserAdress {
 
     private String street, suite, city, zipcode;
-    private mAddressGeo geo;
+    private MAddressGeo geo;
 
 }

@@ -1,17 +1,16 @@
-package Models;
+package models;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@ToString
-@Getter @Setter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-public class mPost {
+public class MPost {
 
     private int userId, id;
     private String title, body;
 
-    public mPost(int userId, String title, String body) {
+    public MPost(int userId, String title, String body) {
         this.userId = userId;
         this.title = title;
         this.body = body;

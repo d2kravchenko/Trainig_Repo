@@ -1,19 +1,16 @@
-package Models;
+package models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @EqualsAndHashCode(exclude = "id")
 @ToString
 @Getter @Setter
-public class mUser {
+public class MUser {
 
     private int id;
     private String name, username, email, phone, website;
-    private mUserAdress address;
-    private mUserCompany company;
+    private MUserAdress address;
+    private MUserCompany company;
 
 
 }

@@ -1,15 +1,5 @@
-package Generators;
+package utils;
 
-import Configuration.TestConfig;
-import aquality.selenium.browser.AqualityServices;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 import java.util.Random;
 
 public class GenerateData {
@@ -25,8 +15,7 @@ public class GenerateData {
     ************************************************/
 
     public static String getRandomText(int countMin, int countMax){
-        Boolean nextUpper = true;
-
+        boolean nextUpper = true;
         if (countMin >= countMax || countMin < 0 || countMax > 1000) {
             countMin = 25;
             countMax = 100;
@@ -34,16 +23,13 @@ public class GenerateData {
         char[] chars = "1234567890abcdefghijklmnopqrstuvwxyz".toCharArray();
         String output = "";
         for (int i = countMin; i <= countMax; i++) {
-            char c = chars[random.nextInt(chars.length)];
-
+            char nextChar = chars[random.nextInt(chars.length)];
             if (nextUpper) {
-                c = Character.toUpperCase(c);
+                nextChar = Character.toUpperCase(nextChar);
                 nextUpper = false;
             }
-
-            output = output + c;
-
-            if (random.nextInt(100) <= 20 && i!= countMax) { //20% chance to separate with a space and set next char to Uppercase
+            output = output + nextChar;
+            if (random.nextInt(100) <= 20 && i != countMax) { //20% chance to separate with a space and set next char to Uppercase
                 output = output + " ";
                 nextUpper = true;
             }

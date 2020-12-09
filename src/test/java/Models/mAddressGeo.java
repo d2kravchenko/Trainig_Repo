@@ -1,14 +1,8 @@
-package Models;
+package models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@EqualsAndHashCode
-@ToString
-@Getter
-@Setter
-public class mAddressGeo {
+@Data
+public class MAddressGeo {
     private float lat, lng;
 }

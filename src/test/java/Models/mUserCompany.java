@@ -1,14 +1,9 @@
-package Models;
+package models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@EqualsAndHashCode
-@ToString
-@Getter @Setter
-public class mUserCompany {
+@Data
+public class MUserCompany {
     private String name, catchPhrase, bs;
 
 }

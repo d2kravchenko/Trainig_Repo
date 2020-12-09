@@ -1,8 +1,8 @@
 {
   "TestData": {
-      "ExistingPost": {"id": 99},
-      "NonExistingPost": {"id": 150},
-      "ExistingUser": {"id": 5}
+      "ExistingPost":  99,
+      "NonExistingPost": 150,
+      "ExistingUser": 5
   },
 
   "ExpectedData": {

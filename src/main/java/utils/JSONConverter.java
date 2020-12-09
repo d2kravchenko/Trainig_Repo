@@ -1,16 +1,11 @@
-package JSONUtils;
+package utils;
 
 import aquality.selenium.browser.AqualityServices;
-import aquality.selenium.core.logging.Logger;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
-
 public class JSONConverter {
-
-    private static final Logger logger = AqualityServices.getLogger();
 
     public static <T> T serializeJSONString(Class c, String inline) {
 
@@ -18,7 +13,7 @@ public class JSONConverter {
         T obj;
         try { obj = (T) objectMapper.readValue(inline, c); }
         catch (IOException e) {
-            logger.warn(e.getMessage());
+            AqualityServices.getLogger().warn(e.getMessage());
             return null;                  }
         return obj;
     }
