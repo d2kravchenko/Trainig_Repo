@@ -4,7 +4,7 @@ import aquality.appium.mobile.application.AqualityServices;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 
-public class SwipeUtils {
+public class SwipeHelper {
 
     public static void swipeRefresh(){
         double startPointX = 0.5;

@@ -4,7 +4,7 @@ import screenObjects.HomeScreen;
 import aquality.appium.mobile.application.AqualityServices;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.SwipeUtils;
+import utils.SwipeHelper;
 
 public class NewTextDocumentUndoTextBody extends BaseTest {
 
@@ -40,7 +40,7 @@ public class NewTextDocumentUndoTextBody extends BaseTest {
         Assert.assertTrue(homeScreen.getFileForm(GENERATED_TEXT_DOCUMENT_NAME).isFileNotExist(), "File is still present in file list");
 
         AqualityServices.getLogger().info("5. Refresh screen with gesture");
-        SwipeUtils.swipeRefresh();
+        SwipeHelper.swipeRefresh();
         AqualityServices.getLogger().info("Asserting that file is not present in the file list");
         Assert.assertTrue(homeScreen.getFileForm(GENERATED_TEXT_DOCUMENT_NAME).isFileNotExist(), "File is still present in file list");
     }
