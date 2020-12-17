@@ -29,6 +29,7 @@ public class RestApiTestSteps {
             GenerateData.getRandomText(10, 25)  //random text 10-25 symbols
     );
 
+
     public static void allPostsTest(){
 
         AqualityServices.getLogger().info("Sending GET-request to receive all posts from %s", Endpoints.POSTS);
@@ -62,7 +63,7 @@ public class RestApiTestSteps {
         AqualityServices.getLogger().info("Checking that status code is %d, title, body and userId matches what we passed in the request, id is present in the response.", HttpStatus.SC_CREATED);
         Request.post(Endpoints.POSTS, POSTING_POST)
                 .statusCode(HttpStatus.SC_CREATED)
-                .body("userId", Matchers.is(200))
+                .body("userId", Matchers.is(POSTING_POST.getUserId()))
                 .body("id", Matchers.not(Matchers.blankOrNullString()))
                 .body("title", Matchers.is(POSTING_POST.getTitle()))
                 .body("body", Matchers.is(POSTING_POST.getBody()));
