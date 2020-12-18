@@ -13,11 +13,8 @@ public class Request {
     private static final String BASE_URI = (String) testConfig.getValue("/Url");
 
 
-    /* ***********************
-    Args order: Endpoint, id.
-    *************************/
-    public static ValidatableResponse get(String endpoint){
-                return given().baseUri(BASE_URI).get(endpoint).then();
+   public static ValidatableResponse get(String endpoints){
+                return given().baseUri(BASE_URI).get(endpoints).then();
     }
 
     public static ValidatableResponse post(String endpoint, Object object){

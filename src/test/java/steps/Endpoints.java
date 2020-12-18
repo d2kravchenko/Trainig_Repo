@@ -1,17 +1,13 @@
+package steps;
 
-
-public enum Endpoints {
+public enum Endpoints  {
     POSTS("posts"),
-    users("users");
+    USERS("users");
 
-    private String value;
+    private final String value;
 
     Endpoints(String value){
         this.value = value;
-    }
-
-    public String getValue(){
-        return value;
     }
 
     public String format(String... uris) {

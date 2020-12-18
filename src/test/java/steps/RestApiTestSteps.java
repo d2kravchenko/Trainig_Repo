@@ -1,9 +1,12 @@
+package steps;
+
 import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.core.utilities.ISettingsFile;
 import aquality.selenium.core.utilities.JsonSettingsFile;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import models.PostModel;
+import models.ModelFields;
 import models.UserModel;
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
@@ -13,6 +16,7 @@ import utils.JSONConverter;
 import utils.SearchHelper;
 import utils.SortHelper;
 import utils.apiUtils.Request;
+
 
 public class RestApiTestSteps {
 
@@ -34,7 +38,7 @@ public class RestApiTestSteps {
 
         AqualityServices.getLogger().info("Sending GET-request to receive all posts from %s", Endpoints.POSTS);
         AqualityServices.getLogger().info("Checking that status code is %d, format is JSON and list sorted natural by id", HttpStatus.SC_OK);
-        ValidatableResponse vResponse = Request.get(Endpoints.POSTS.getValue())
+        ValidatableResponse vResponse = Request.get(Endpoints.POSTS.format())
                 .statusCode(HttpStatus.SC_OK)
                 .contentType(ContentType.JSON);
         Assert.assertTrue(SortHelper.isSortedNaturalById(vResponse), "The list is not sorted correctly");
@@ -45,10 +49,10 @@ public class RestApiTestSteps {
         AqualityServices.getLogger().info("Checking that status code is %d, userId = %d, id = %d, title and body is not blank", HttpStatus.SC_OK, EXPECTED_RECEIVED_POST.getUserId(), EXPECTED_RECEIVED_POST.getId());
         Request.get(Endpoints.POSTS.format(String.valueOf(EXISTING_POST_ID)))
                 .statusCode(HttpStatus.SC_OK).and()
-                .body("userId", Matchers.is(EXPECTED_RECEIVED_POST.getUserId()))
-                .body("id", Matchers.is(EXPECTED_RECEIVED_POST.getId()))
-                .body("title", Matchers.not(Matchers.blankString()))
-                .body("body", Matchers.not(Matchers.blankString()));
+                .body(ModelFields.POST_USER_ID.getValue(), Matchers.is(EXPECTED_RECEIVED_POST.getUserId()))
+                .body(ModelFields.POST_ID.getValue(), Matchers.is(EXPECTED_RECEIVED_POST.getId()))
+                .body(ModelFields.POST_TITLE.getValue(), Matchers.not(Matchers.blankString()))
+                .body(ModelFields.POST_BODY.getValue(), Matchers.not(Matchers.blankString()));
     }
 
     public static void nonExistingPostTest(){
@@ -61,18 +65,18 @@ public class RestApiTestSteps {
     public static void postPostTest(){
         AqualityServices.getLogger().info("Sending POST-request to %s", Endpoints.POSTS);
         AqualityServices.getLogger().info("Checking that status code is %d, title, body and userId matches what we passed in the request, id is present in the response.", HttpStatus.SC_CREATED);
-        Request.post(Endpoints.POSTS.getValue(), POSTING_POST)
+        Request.post(Endpoints.POSTS.format(), POSTING_POST)
                 .statusCode(HttpStatus.SC_CREATED)
-                .body("userId", Matchers.is(POSTING_POST.getUserId()))
-                .body("id", Matchers.not(Matchers.blankOrNullString()))
-                .body("title", Matchers.is(POSTING_POST.getTitle()))
-                .body("body", Matchers.is(POSTING_POST.getBody()));
+                .body(ModelFields.POST_USER_ID.getValue(), Matchers.is(POSTING_POST.getUserId()))
+                .body(ModelFields.POST_ID.getValue(), Matchers.not(Matchers.blankOrNullString()))
+                .body(ModelFields.POST_TITLE.getValue(), Matchers.is(POSTING_POST.getTitle()))
+                .body(ModelFields.POST_BODY.getValue(), Matchers.is(POSTING_POST.getBody()));
     }
 
     public static void allUsersAndIndividualUserTest(){
-        AqualityServices.getLogger().info("Sending GET-request to receive all USERS from %s", Endpoints.users);
+        AqualityServices.getLogger().info("Sending GET-request to receive all USERS from %s", Endpoints.USERS);
         AqualityServices.getLogger().info("Checking that status code is %d, format is JSON, title, body and userId matches what we passed in the request, id is present in the response.", HttpStatus.SC_OK);
-        ValidatableResponse vResponse = Request.get(Endpoints.users.getValue())
+        ValidatableResponse vResponse = Request.get(Endpoints.USERS.format())
                 .statusCode(HttpStatus.SC_OK)
                 .contentType(ContentType.JSON);
         UserModel[] users = vResponse.extract().as(UserModel[].class);
@@ -82,7 +86,7 @@ public class RestApiTestSteps {
         // step 6 is linked to step 5
         AqualityServices.getLogger().info("Sending GET-request to receive #%d User (existing)", EXISTING_USER_ID);
         AqualityServices.getLogger().info("Checking that status code is %d and User data matches the data obtained previously.", HttpStatus.SC_OK);
-        vResponse = Request.get(Endpoints.users.format(String.valueOf(EXISTING_USER_ID)))
+        vResponse = Request.get(Endpoints.USERS.format(String.valueOf(EXISTING_USER_ID)))
                 .statusCode(HttpStatus.SC_OK);
         UserModel userFoundedDirectly = vResponse.extract().as(UserModel.class);
         Assert.assertEquals(userFoundedDirectly, userFoundedFromAllUsers, "<Users are not equal>");

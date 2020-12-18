@@ -1,3 +1,5 @@
+package steps;
+
 import aquality.selenium.browser.AqualityServices;
 import org.testng.annotations.Test;
 
