@@ -10,7 +10,7 @@ import screenobjects.Attribute;
 public class PopularScreenItemForm extends Screen {
 
     public PopularScreenItemForm(int itemNumber) {
-        super(By.xpath(String.format("//android.widget.RelativeLayout[@index = '%d']", itemNumber )), String.format("Item #%d on Popular tab", itemNumber));
+        super(By.xpath(String.format("//android.widget.RelativeLayout[@index = '%d']", itemNumber - 1 )), String.format("Item #%d on Popular tab", itemNumber)); //index begin from 0, the second element have index 1.
     }
 
     private final String ID_POPULAR_PROJECT_NAME = "name_and_blurb_text_view";
