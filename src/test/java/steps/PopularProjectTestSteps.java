@@ -28,11 +28,6 @@ public class PopularProjectTestSteps {
                 "Check that Popular tab is selected");
         SwipeUtils.swipeToRightTab();
         Assert.assertTrue(menuForm.isPopularSelected(), "Popular tab is not selected");
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     public static void getProjectFromPopularListStep() {
