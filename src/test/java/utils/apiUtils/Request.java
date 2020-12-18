@@ -16,21 +16,8 @@ public class Request {
     /* ***********************
     Args order: Endpoint, id.
     *************************/
-    public static ValidatableResponse get(String... args){
-        String endpoint;
-        String id;
-
-        switch (args.length) {
-            case 1:
-                endpoint = args[0];
+    public static ValidatableResponse get(String endpoint){
                 return given().baseUri(BASE_URI).get(endpoint).then();
-            case 2:
-                endpoint = args[0];
-                id = args[1];
-                return given().baseUri(BASE_URI).pathParam("id", id).get(endpoint + "/{id}").then();
-            default:
-                throw new IllegalStateException("Unexpected argument count: " + args.length);
-        }
     }
 
     public static ValidatableResponse post(String endpoint, Object object){

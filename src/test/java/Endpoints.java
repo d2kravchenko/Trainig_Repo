@@ -1,5 +1,7 @@
+
+
 public enum Endpoints {
-    posts("posts"),
+    POSTS("posts"),
     users("users");
 
     private String value;
@@ -10,5 +12,13 @@ public enum Endpoints {
 
     public String getValue(){
         return value;
+    }
+
+    public String format(String... uris) {
+        StringBuilder fullUri = new StringBuilder(this.value);
+        for (String uri : uris) {
+            fullUri.append(String.format("/%s", uri));
+        }
+        return fullUri.toString();
     }
 }
