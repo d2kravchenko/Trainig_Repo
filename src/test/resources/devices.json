@@ -21,7 +21,7 @@
   "Android_NAME": {
     "capabilities": {
       "deviceName": "Samsung",
-      "udid": "d6a7074e7d23",
+      "udid": "emulator-5554",
       "systemPort": "4723"
     }
   }

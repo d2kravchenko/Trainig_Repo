@@ -1,4 +1,4 @@
-package screenObjects;
+package screenobjects;
 import models.ProjectModel;
 import aquality.appium.mobile.application.AqualityServices;
 import aquality.appium.mobile.elements.interfaces.ILabel;
@@ -13,15 +13,15 @@ public class SearchScreen extends Screen {
     }
 
     private final int MAX_NAME_SIZE = 15;
-    private final String XPATH_SEARCH_TEXT_BOX = "//android.widget.EditText[@resource-id = 'com.kickstarter.kickstarter:id/search_edit_text']";
-    private final String XPATH_PROJECT_LABEL = "//android.widget.LinearLayout[@resource-id = 'com.kickstarter.kickstarter:id/featured_search_result_view']";
+    private final String ID_SEARCH_TEXT_BOX = "search_edit_text";
+    private final String ID_PROJECT_LABEL = "featured_search_result_view";
     private final String ID_PROJECT_NAME = "project_name_text_view";
     private final String ID_PROJECT_PERCENT = "search_result_percent_funded_text_view";
     private final String ID_PROJECT_DAYS = "search_result_deadline_countdown_text_view";
     private final String ID_PROJECT_TIME_UNITS = "search_result_deadline_unit_text_view";
 
-    private final ITextBox searchTextBox = AqualityServices.getElementFactory().getTextBox(By.xpath(XPATH_SEARCH_TEXT_BOX), "Search text box");
-    private final ILabel projectLabel = AqualityServices.getElementFactory().getLabel(By.xpath(XPATH_PROJECT_LABEL), "Project");
+    private final ITextBox searchTextBox = AqualityServices.getElementFactory().getTextBox(By.id(ID_SEARCH_TEXT_BOX), "Search text box");
+    private final ILabel projectLabel = AqualityServices.getElementFactory().getLabel(By.id(ID_PROJECT_LABEL), "Project");
     private final ILabel projectName = AqualityServices.getElementFactory().getLabel(By.id(ID_PROJECT_NAME), "Project name label");
     private final ILabel projectPercent = AqualityServices.getElementFactory().getLabel(By.id(ID_PROJECT_PERCENT), "Project percent label");
     private final ILabel projectDays = AqualityServices.getElementFactory().getLabel(By.id(ID_PROJECT_DAYS), "Project days label");
@@ -29,10 +29,10 @@ public class SearchScreen extends Screen {
 
     public ProjectModel getProjectData(){
         ProjectModel project = new ProjectModel();
-        project.setName(projectName.getAttribute(ATTRIBUTE.TEXT));
-        project.setPercent(projectPercent.getAttribute(ATTRIBUTE.TEXT));
-        project.setDays(projectDays.getAttribute(ATTRIBUTE.TEXT));
-        project.setTimeUnits(projectTimeUnits.getAttribute(ATTRIBUTE.TEXT));
+        project.setName(projectName.getAttribute(Attribute.TEXT.getValue()));
+        project.setPercent(projectPercent.getAttribute(Attribute.TEXT.getValue()));
+        project.setDays(projectDays.getAttribute(Attribute.TEXT.getValue()));
+        project.setTimeUnits(projectTimeUnits.getAttribute(Attribute.TEXT.getValue()));
         return project;
     }
 
