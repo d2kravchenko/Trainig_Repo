@@ -1,12 +1,12 @@
 package utils;
 
 import aquality.selenium.browser.AqualityServices;
-import models.MUser;
+import models.UserModel;
 
 public class SearchHelper {
-    public static MUser findUserById(MUser[] users, int id){
+    public static UserModel findUserById(UserModel[] users, int id){
 
-        for (MUser user : users) {
+        for (UserModel user : users) {
             if (user.getId() == id){
                 AqualityServices.getLogger().info("User founded");
                 return user;

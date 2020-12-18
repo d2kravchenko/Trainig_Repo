@@ -3,7 +3,7 @@ package models;
 import lombok.Data;
 
 @Data
-public class MUserCompany {
+public class UserCompanyModel {
     private String name, catchPhrase, bs;
 
 }

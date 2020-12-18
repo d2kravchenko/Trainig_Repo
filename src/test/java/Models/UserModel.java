@@ -5,12 +5,12 @@ import lombok.*;
 @EqualsAndHashCode(exclude = "id")
 @ToString
 @Getter @Setter
-public class MUser {
+public class UserModel {
 
     private int id;
     private String name, username, email, phone, website;
-    private MUserAdress address;
-    private MUserCompany company;
+    private UserAddressModel address;
+    private UserCompanyModel company;
 
 
 }

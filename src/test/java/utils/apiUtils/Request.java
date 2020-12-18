@@ -12,11 +12,25 @@ public class Request {
     private static final ISettingsFile testConfig = new JsonSettingsFile("testConfig.json");
     private static final String BASE_URI = (String) testConfig.getValue("/Url");
 
-    public static ValidatableResponse get(String endpoint){
-       return given().baseUri(BASE_URI).get(endpoint).then();
-    }
-    public static ValidatableResponse get(String endpoint, int id){
-       return given().baseUri(BASE_URI).pathParam("id", id).get(endpoint).then();
+
+    /* ***********************
+    Args order: Endpoint, id.
+    *************************/
+    public static ValidatableResponse get(String... args){
+        String endpoint;
+        String id;
+
+        switch (args.length) {
+            case 1:
+                endpoint = args[0];
+                return given().baseUri(BASE_URI).get(endpoint).then();
+            case 2:
+                endpoint = args[0];
+                id = args[1];
+                return given().baseUri(BASE_URI).pathParam("id", id).get(endpoint + "/{id}").then();
+            default:
+                throw new IllegalStateException("Unexpected argument count: " + args.length);
+        }
     }
 
     public static ValidatableResponse post(String endpoint, Object object){

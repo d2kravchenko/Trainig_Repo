@@ -5,12 +5,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class MPost {
+public class PostModel {
 
     private int userId, id;
     private String title, body;
 
-    public MPost(int userId, String title, String body) {
+    public PostModel(int userId, String title, String body) {
         this.userId = userId;
         this.title = title;
         this.body = body;
