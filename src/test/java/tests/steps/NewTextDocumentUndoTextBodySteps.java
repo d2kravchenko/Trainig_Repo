@@ -1,47 +1,57 @@
+package tests.steps;
+
+import aquality.appium.mobile.application.AqualityServices;
+import org.testng.Assert;
 import screenObjects.AddingFileScreen;
 import screenObjects.FileEditorScreen;
 import screenObjects.HomeScreen;
-import aquality.appium.mobile.application.AqualityServices;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import tests.BaseTest;
 import utils.SwipeHelper;
 
-public class NewTextDocumentUndoTextBody extends BaseTest {
+public class NewTextDocumentUndoTextBodySteps extends BaseTest {
 
-    @Test
-    public void newTextDocumentUndoTextBodyTest(){
-        AqualityServices.getLogger().info("Starting New Text Document Undo Text Body test");
+    private static HomeScreen homeScreen;
+    private static AddingFileScreen addingFileScreen;
+    private static FileEditorScreen fileEditorScreen;
 
+    public static void addNewTextDocument() {
         AqualityServices.getLogger().info("1. Go to main screen, click \"add file\" button and choose to create a  text document");
-        HomeScreen homeScreen = new HomeScreen();
+        homeScreen = new HomeScreen();
         homeScreen.selectNewTestDocumentCreation();
+    }
 
-        AqualityServices.getLogger().info("2. Enter a random file name and choose an empty template");
+    public static void typeNameAndSelectTemplate() {
+        AqualityServices.getLogger().info("2. Type a random file name and select an empty template. " +
+                "Check that correct file name is displayed and the file editing screen is opened in less then 30 seconds");
         homeScreen.acceptNameAndEmptyFileTemplate(GENERATED_TEXT_DOCUMENT_NAME);
-        AddingFileScreen addingFileScreen = new AddingFileScreen();
-        AqualityServices.getLogger().info("Asserting that correct file name is displayed");
+        addingFileScreen = new AddingFileScreen();
         Assert.assertEquals(addingFileScreen.getFilename(), GENERATED_TEXT_DOCUMENT_NAME, "Name is not correct");
         GENERATED_TEXT_DOCUMENT_NAME = addingFileScreen.getFilenameWithExtension();
-        FileEditorScreen fileEditorScreen = new FileEditorScreen();
-        AqualityServices.getLogger().info("Asserting that the file editing screen is opened in less then 30 seconds");
+        fileEditorScreen = new FileEditorScreen();
         Assert.assertTrue(fileEditorScreen.isOpenedLessThen(TEXT_EDITOR_MAXIMUM_OPEN_DURATION), "File editing screen is not opened in less then 30 seconds");
+    }
 
-        AqualityServices.getLogger().info("3. Enter random text, click Undo button, close file");
+    public static void typeRandomTextUndoAndClose() {
+        AqualityServices.getLogger().info("3. Enter random text, click Undo button, close file." +
+                "Check that the created file is present in the file list");
         fileEditorScreen.typeText(GENERATED_TEXT_DOCUMENT_BODY);
         fileEditorScreen.clickUndoButton();
         fileEditorScreen.clickCloseButton();
         AqualityServices.getLogger().info(homeScreen.isOpened() ? "Returned to Home screen" : "Home screen not opened");
-        AqualityServices.getLogger().info("Asserting that the created file is present in the file list");
         Assert.assertTrue(homeScreen.getFileForm(GENERATED_TEXT_DOCUMENT_NAME).isFileExist(), "Created file is not present in the file list");
+    }
 
-        AqualityServices.getLogger().info("4. Delete file");
+    public static void deleteFile() {
+        AqualityServices.getLogger().info("4. Delete file." +
+                "Check that file is not present in the file list");
         homeScreen.getFileForm(GENERATED_TEXT_DOCUMENT_NAME).deleteFile();
-        AqualityServices.getLogger().info("Asserting that file is not present in the file list");
         Assert.assertTrue(homeScreen.getFileForm(GENERATED_TEXT_DOCUMENT_NAME).isFileNotExist(), "File is still present in file list");
+    }
 
-        AqualityServices.getLogger().info("5. Refresh screen with gesture");
+    public static void refreshScreen() {
+        AqualityServices.getLogger().info("5. Refresh screen with gesture." +
+                "Check that file is not present in the file list");
         SwipeHelper.swipeRefresh();
-        AqualityServices.getLogger().info("Asserting that file is not present in the file list");
         Assert.assertTrue(homeScreen.getFileForm(GENERATED_TEXT_DOCUMENT_NAME).isFileNotExist(), "File is still present in file list");
     }
 }

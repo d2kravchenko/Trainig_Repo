@@ -5,22 +5,22 @@
 
     <test name="New text document accept test body test">
         <classes>
-            <class name="NewTextDocumentAcceptTextBody"/>
+            <class name="tests.NewTextDocumentAcceptTextBody"/>
         </classes>
     </test> <!-- Test -->
     <test name="New text document Undo test body test">
         <classes>
-            <class name="NewTextDocumentUndoTextBody"/>
+            <class name="tests.NewTextDocumentUndoTextBody"/>
         </classes>
     </test> <!-- Test -->
     <test name="Expected file test">
         <classes>
-            <class name="ExpectedFileTest"/>
+            <class name="tests.ExpectedFileTest"/>
         </classes>
     </test> <!-- Test -->
     <test name="Search Test">
         <classes>
-            <class name="SearchTest"/>
+            <class name="tests.SearchTest"/>
         </classes>
     </test> <!-- Test -->
 

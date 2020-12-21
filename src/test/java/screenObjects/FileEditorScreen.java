@@ -5,6 +5,7 @@ import aquality.appium.mobile.elements.interfaces.IButton;
 import aquality.appium.mobile.elements.interfaces.ITextBox;
 import aquality.appium.mobile.screens.Screen;
 import org.openqa.selenium.By;
+import screenObjects.constants.ATTRIBUTE;
 
 import java.time.Duration;
 

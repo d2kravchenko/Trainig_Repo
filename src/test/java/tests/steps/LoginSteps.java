@@ -1,8 +1,9 @@
-import screenObjects.loginScreenObjects.*;
-import aquality.appium.mobile.application.AqualityServices;
-import com.google.common.collect.ImmutableMap;
+package tests.steps;
 
-public class Steps {
+import aquality.appium.mobile.application.AqualityServices;
+import screenObjects.loginScreenObjects.*;
+
+public class LoginSteps {
 
     public static void login(String server, String email, String password) {
 
@@ -17,9 +18,5 @@ public class Steps {
         AccountAccessScreen accountAccessScreen = new AccountAccessScreen();
         accountAccessScreen.clickGrantAccessButton();
         AqualityServices.getLogger().info("Logged on");
-    }
-
-    public static void acceptFormWithScript(){
-        AqualityServices.getApplication().getDriver().executeScript("mobile:performEditorAction", ImmutableMap.of("action", "done"));
     }
 }
