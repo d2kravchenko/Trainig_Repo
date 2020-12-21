@@ -5,7 +5,7 @@
 
     <test name="SecretCloset app item and seller test">
         <classes>
-            <class name="SecretClosetTest"/>
+            <class name="tests.SecretClosetTest"/>
         </classes>
     </test> <!-- Test -->
 

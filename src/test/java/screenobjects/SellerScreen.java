@@ -5,6 +5,7 @@ import aquality.appium.mobile.elements.interfaces.ILabel;
 import aquality.appium.mobile.screens.Screen;
 import models.SellerModel;
 import org.openqa.selenium.By;
+import screenobjects.constants.Attribute;
 
 public class SellerScreen extends Screen {
     public SellerScreen(){
@@ -21,7 +22,7 @@ public class SellerScreen extends Screen {
     }
 
     public boolean isSellerDataCorrect(SellerModel expectedSeller){
-        return sellerCityLabel.getAttribute(ATTRIBUTE.TEXT).equals(expectedSeller.getCity()) && getSellerNameLabel(expectedSeller.getName()).state().isExist();
+        return sellerCityLabel.getAttribute(Attribute.TEXT.getValue()).equals(expectedSeller.getCity()) && getSellerNameLabel(expectedSeller.getName()).state().isExist();
     }
 
 }

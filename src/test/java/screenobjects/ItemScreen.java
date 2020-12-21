@@ -7,11 +7,12 @@ import aquality.appium.mobile.screens.Screen;
 import models.ItemModel;
 import models.SellerModel;
 import org.openqa.selenium.By;
+import screenobjects.constants.Attribute;
 import utils.StringHelper;
 
 public class ItemScreen extends Screen {
     public ItemScreen(){
-        super(By.xpath("//android.widget.RelativeLayout[@resource-id = 'com.zdv.secretcloset:id/rlBasicInfo']/parent::"), "Item screen");
+        super(By.id("rlBasicInfo"), "Item screen");
     }
     private final String ID_ITEM_BRAND_LABEL = "tvItemBrand";
     private final String ID_NEW_PRICE_LABEL = "tvAdditionalPrice";
@@ -29,19 +30,19 @@ public class ItemScreen extends Screen {
 
     public ItemModel parseItemData(){
         ItemModel item = new ItemModel();
-        item.setBrand(itemBrandLabel.getAttribute(ATTRIBUTE.TEXT));
+        item.setBrand(itemBrandLabel.getAttribute(Attribute.TEXT.getValue()));
         discountPercentLabel.getTouchActions().scrollToElement(SwipeDirection.DOWN);
-        String newPrice = newPriceLabel.getAttribute(ATTRIBUTE.TEXT);    // String is like "Price: 9999 USD"
+        String newPrice = newPriceLabel.getAttribute(Attribute.TEXT.getValue());    // String is like "Price: 9999 USD"
         item.setNewPrice(StringHelper.removeAllBeforeDigits(newPrice)); // Remove any chars before digits
-        item.setOldPrice(oldPriceLabel.getAttribute(ATTRIBUTE.TEXT));
-        item.setDiscount(discountPercentLabel.getAttribute(ATTRIBUTE.TEXT));
+        item.setOldPrice(oldPriceLabel.getAttribute(Attribute.TEXT.getValue()));
+        item.setDiscount(discountPercentLabel.getAttribute(Attribute.TEXT.getValue()));
         return item;
     }
     public SellerModel parseSellerData(){
         sellerNameLabel.getTouchActions().scrollToElement(SwipeDirection.UP);
         SellerModel seller = new SellerModel();
-        seller.setName(sellerNameLabel.getAttribute(ATTRIBUTE.TEXT));
-        seller.setCity(sellerCityLabel.getAttribute(ATTRIBUTE.TEXT));
+        seller.setName(sellerNameLabel.getAttribute(Attribute.TEXT.getValue()));
+        seller.setCity(sellerCityLabel.getAttribute(Attribute.TEXT.getValue()));
         return seller;
     }
 

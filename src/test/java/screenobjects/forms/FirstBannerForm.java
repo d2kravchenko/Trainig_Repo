@@ -5,7 +5,7 @@ import aquality.appium.mobile.elements.interfaces.ILabel;
 import aquality.appium.mobile.screens.Screen;
 import models.ItemModel;
 import org.openqa.selenium.By;
-import screenobjects.ATTRIBUTE;
+import screenobjects.constants.Attribute;
 
 public class FirstBannerForm extends Screen {
     public FirstBannerForm(){
@@ -25,10 +25,10 @@ public class FirstBannerForm extends Screen {
 
     public ItemModel parseFirstItemData(){
         ItemModel firstItem = new ItemModel();
-        firstItem.setBrand(itemBrandLabel.getAttribute(ATTRIBUTE.TEXT));
-        firstItem.setOldPrice(oldPriceLabel.getAttribute(ATTRIBUTE.TEXT));
-        firstItem.setNewPrice(newPriceLabel.getAttribute(ATTRIBUTE.TEXT));
-        firstItem.setDiscount(discountPercentLabel.getAttribute(ATTRIBUTE.TEXT));
+        firstItem.setBrand(itemBrandLabel.getAttribute(Attribute.TEXT.getValue()));
+        firstItem.setOldPrice(oldPriceLabel.getAttribute(Attribute.TEXT.getValue()));
+        firstItem.setNewPrice(newPriceLabel.getAttribute(Attribute.TEXT.getValue()));
+        firstItem.setDiscount(discountPercentLabel.getAttribute(Attribute.TEXT.getValue()));
         return firstItem;
     }
 
