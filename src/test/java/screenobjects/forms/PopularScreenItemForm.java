@@ -24,7 +24,7 @@ public class PopularScreenItemForm extends Screen {
     private final ILabel popularProjectDays = baseElementLabel.findChildElement(By.id(ID_POPULAR_PROJECT_DAYS), "Popular Project days label", ILabel.class);
     private final ILabel popularProjectTimeUnits = baseElementLabel.findChildElement(By.id(ID_POPULAR_PROJECT_TIME_UNITS), "Popular Project time units label", ILabel.class);
 
-    public ProjectModel getProject2Data(){
+    public ProjectModel getProjectData(){
         ProjectModel project = new ProjectModel();
         popularProjectTimeUnits.getTouchActions().scrollToElement(SwipeDirection.DOWN);
         project.setName(popularProjectName.getAttribute(Attribute.TEXT.getValue()));

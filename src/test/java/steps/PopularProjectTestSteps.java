@@ -20,20 +20,21 @@ public class PopularProjectTestSteps {
     private static ProjectModel oldProject = new ProjectModel();
     private static ProjectModel newProject = new ProjectModel();
 
-    private static final MenuForm menuForm = new MenuForm();
-    private static final SearchScreen searchScreen = new SearchScreen();
+    private static MenuForm menuForm;
+    private static SearchScreen searchScreen;
 
     public static void swipeToPopularStep() {
         AqualityServices.getLogger().info("1. From main screen swipe to Popular screen. " +
                 "Check that Popular tab is selected");
         SwipeUtils.swipeToRightTab();
+        menuForm = new MenuForm();
         Assert.assertTrue(menuForm.isPopularSelected(), "Popular tab is not selected");
     }
 
     public static void getProjectFromPopularListStep() {
         AqualityServices.getLogger().info("2. Get name, funding percentage, number of days of the %d popular project from list", POPULAR_ITEM_NUMBER_IN_LIST);
         AqualityServices.getLogger().info("Getting data from Project #%d on Popular tab", POPULAR_ITEM_NUMBER_IN_LIST);
-        oldProject = new PopularScreenItemForm(POPULAR_ITEM_NUMBER_IN_LIST).getProject2Data();
+        oldProject = new PopularScreenItemForm(POPULAR_ITEM_NUMBER_IN_LIST).getProjectData();
     }
 
     public static void searchProjectStep() {
@@ -41,6 +42,7 @@ public class PopularProjectTestSteps {
                 "Check that searching project was found and our Project has same percents and days on Search and Popular screens");
         AqualityServices.getLogger().debug(menuForm.isExist() ? "Menu form still displayed" : "Menu form is not exist");
         menuForm.clickSearchButton();
+        searchScreen = new SearchScreen();
         searchScreen.search(oldProject.getName());
         newProject = searchScreen.getProjectData();
         Assert.assertTrue(searchScreen.projectFound(), "Project was not founded");
@@ -51,8 +53,8 @@ public class PopularProjectTestSteps {
         AqualityServices.getLogger().info("4. Open project, get funding date. " +
                 "Check that the number of days before the funding date is the same");
         searchScreen.clickProject();
-        int Days = DateUtils.getDaysToDate(new ProjectScreen().getFundDate());
-        Assert.assertEquals(Integer.parseInt(oldProject.getDays()), Days, "The number of days from Popular screen does not match the number of days before the funding date");
+        int days = DateUtils.getDaysToDate(new ProjectScreen().getFundDate());
+        Assert.assertEquals(Integer.parseInt(oldProject.getDays()), days, "The number of days from Popular screen does not match the number of days before the funding date");
     }
 }
 
