@@ -1,0 +1,5 @@
+{
+  "TextEditorMaximumOpenDuration": 30,
+  "expectedFileName": "etalon.md",
+  "expectedFileText": "Example text"
+}

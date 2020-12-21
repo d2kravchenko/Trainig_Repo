@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Nextcloud app testing">
+
+    <test name="New text document accept test body test">
+        <classes>
+            <class name="tests.NewTextDocumentAcceptTextBody"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="New text document Undo test body test">
+        <classes>
+            <class name="tests.NewTextDocumentUndoTextBody"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Expected file test">
+        <classes>
+            <class name="tests.ExpectedFileTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Search Test">
+        <classes>
+            <class name="tests.SearchTest"/>
+        </classes>
+    </test> <!-- Test -->
+
+
+
+</suite> <!-- Suite -->
+
