@@ -1,4 +1,4 @@
-package screenObjects.loginScreenObjects;
+package screenobjects.loginscreenobjects;
 
 import aquality.appium.mobile.application.AqualityServices;
 import aquality.appium.mobile.elements.interfaces.IButton;

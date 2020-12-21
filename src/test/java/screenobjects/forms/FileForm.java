@@ -1,4 +1,4 @@
-package screenObjects.forms;
+package screenobjects.forms;
 
 import aquality.appium.mobile.application.AqualityServices;
 import aquality.appium.mobile.elements.interfaces.IButton;
@@ -10,17 +10,18 @@ public class FileForm extends Screen {
 
     public FileForm(String filename){
         super(By.xpath(String.format("//android.widget.TextView[@text = '%s']" +
-                "/ancestor::android.widget.LinearLayout[@resource-id = 'com.nextcloud.client:id/ListItemLayout']", filename)), "File with name " + filename );
+                "/ancestor::android.widget.LinearLayout[2]", filename)), "File with name " + filename );
+           //or "/ancestor::android.widget.LinearLayout[@resource-id = 'com.nextcloud.client:id/ListItemLayout']"
     }
 
-    private final String XPATH_FILE_MENU_BUTTON =  "//android.widget.ImageView[@resource-id = 'com.nextcloud.client:id/overflow_menu']";
-    private final String XPATH_OPEN_FILE_BUTTON = "//android.widget.TextView[@resource-id = 'com.nextcloud.client:id/Filename']";
+    private final String ID_FILE_MENU_BUTTON =  "overflow_menu";
+    private final String ID_OPEN_FILE_BUTTON = "Filename";
 
     private final FileMenuForm fileMenuForm = new FileMenuForm();
     private final FileDeletingForm fileDeletingForm = new FileDeletingForm();
     private final ILabel baseLabel = AqualityServices.getElementFactory().getLabel(this.getLocator(), "Base label");
-    private final IButton fileMenuButton = baseLabel.findChildElement(By.xpath(XPATH_FILE_MENU_BUTTON), IButton.class);
-    private final IButton openFileButton = baseLabel.findChildElement(By.xpath(XPATH_OPEN_FILE_BUTTON), IButton.class);
+    private final IButton fileMenuButton = baseLabel.findChildElement(By.id(ID_FILE_MENU_BUTTON), IButton.class);
+    private final IButton openFileButton = baseLabel.findChildElement(By.id(ID_OPEN_FILE_BUTTON), IButton.class);
 
     public boolean isFileExist(){
         return this.state().waitForDisplayed();

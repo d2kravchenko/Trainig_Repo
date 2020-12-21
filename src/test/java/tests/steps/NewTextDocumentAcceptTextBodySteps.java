@@ -2,9 +2,9 @@ package tests.steps;
 
 import aquality.appium.mobile.application.AqualityServices;
 import org.testng.Assert;
-import screenObjects.AddingFileScreen;
-import screenObjects.FileEditorScreen;
-import screenObjects.HomeScreen;
+import screenobjects.AddingFileScreen;
+import screenobjects.FileEditorScreen;
+import screenobjects.HomeScreen;
 import tests.BaseTest;
 
 public class NewTextDocumentAcceptTextBodySteps extends BaseTest {
@@ -25,7 +25,7 @@ public class NewTextDocumentAcceptTextBodySteps extends BaseTest {
         homeScreen.acceptNameAndEmptyFileTemplate(GENERATED_TEXT_DOCUMENT_NAME);
         addingFileScreen = new AddingFileScreen();
         Assert.assertEquals(addingFileScreen.getFilename(), GENERATED_TEXT_DOCUMENT_NAME, "Name is not correct");
-        GENERATED_TEXT_DOCUMENT_NAME = addingFileScreen.getFilenameWithExtension();
+        GENERATED_TEXT_DOCUMENT_NAME = addingFileScreen.getFilenameWithExtension(); //The filename must contains an extension in next usage
         fileEditorScreen = new FileEditorScreen();
         Assert.assertTrue(fileEditorScreen.isOpenedLessThen(TEXT_EDITOR_MAXIMUM_OPEN_DURATION), "File editing screen is not opened in less then 30 seconds");
     }

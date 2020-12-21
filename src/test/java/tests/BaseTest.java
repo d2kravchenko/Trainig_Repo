@@ -3,7 +3,7 @@ package tests;
 import configuration.TestConfig;
 import tests.steps.LoginSteps;
 import utils.GenerateData;
-import screenObjects.loginScreenObjects.LoginScreen;
+import screenobjects.loginscreenobjects.LoginScreen;
 import aquality.appium.mobile.application.AqualityServices;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -21,8 +21,6 @@ public abstract class BaseTest {
 
     @BeforeTest
     public void beforeTest(){
-        GENERATED_TEXT_DOCUMENT_NAME = GenerateData.getRandomText(3, 10);   //Renew random generated file name to different tests
-        GENERATED_TEXT_DOCUMENT_BODY = GenerateData.getRandomText(10, 20);  //Renew random generated file body to different tests
         LoginScreen loginScreen = new LoginScreen();
         if (loginScreen.isLoginScreenDisplayed()) {
             AqualityServices.getLogger().info("Pre-test condition: login");

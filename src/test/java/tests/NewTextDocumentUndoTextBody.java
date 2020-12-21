@@ -14,7 +14,6 @@ public class NewTextDocumentUndoTextBody {
         NewTextDocumentUndoTextBodySteps.typeRandomTextUndoAndClose();
         NewTextDocumentUndoTextBodySteps.deleteFile();
         NewTextDocumentUndoTextBodySteps.refreshScreen();
-
     }
 }
 

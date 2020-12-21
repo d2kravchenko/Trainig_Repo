@@ -1,10 +1,10 @@
-package screenObjects;
+package screenobjects;
 
 import aquality.appium.mobile.application.AqualityServices;
 import aquality.appium.mobile.elements.interfaces.ILabel;
 import aquality.appium.mobile.screens.Screen;
 import org.openqa.selenium.By;
-import screenObjects.constants.ATTRIBUTE;
+import screenobjects.constants.Attribute;
 
 public class AddingFileScreen  extends Screen {
 
@@ -18,12 +18,12 @@ public class AddingFileScreen  extends Screen {
 
     public String getFilename(){
           this.state().waitForDisplayed();
-          String fileName = filenameLabel.getAttribute(ATTRIBUTE.TEXT);
+          String fileName = filenameLabel.getAttribute(Attribute.TEXT.getValue());
           return fileName.substring(0, fileName.lastIndexOf("."));
     }
         public String getFilenameWithExtension(){
           this.state().waitForDisplayed();
-          return filenameLabel.getAttribute(ATTRIBUTE.TEXT);
+          return filenameLabel.getAttribute(Attribute.TEXT.getValue());
     }
 
 

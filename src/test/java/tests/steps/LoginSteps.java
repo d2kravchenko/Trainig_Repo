@@ -1,7 +1,7 @@
 package tests.steps;
 
 import aquality.appium.mobile.application.AqualityServices;
-import screenObjects.loginScreenObjects.*;
+import screenobjects.loginscreenobjects.*;
 
 public class LoginSteps {
 

@@ -2,7 +2,7 @@ package tests.steps;
 
 import aquality.appium.mobile.application.AqualityServices;
 import org.testng.Assert;
-import screenObjects.HomeScreen;
+import screenobjects.HomeScreen;
 import tests.BaseTest;
 import utils.ScriptHelper;
 

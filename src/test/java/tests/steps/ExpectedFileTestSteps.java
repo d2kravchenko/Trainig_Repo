@@ -2,8 +2,8 @@ package tests.steps;
 
 import aquality.appium.mobile.application.AqualityServices;
 import org.testng.Assert;
-import screenObjects.FileEditorScreen;
-import screenObjects.HomeScreen;
+import screenobjects.FileEditorScreen;
+import screenobjects.HomeScreen;
 import tests.BaseTest;
 
 public class ExpectedFileTestSteps extends BaseTest {

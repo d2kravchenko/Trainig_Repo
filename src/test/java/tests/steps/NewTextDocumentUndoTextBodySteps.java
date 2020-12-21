@@ -2,9 +2,9 @@ package tests.steps;
 
 import aquality.appium.mobile.application.AqualityServices;
 import org.testng.Assert;
-import screenObjects.AddingFileScreen;
-import screenObjects.FileEditorScreen;
-import screenObjects.HomeScreen;
+import screenobjects.AddingFileScreen;
+import screenobjects.FileEditorScreen;
+import screenobjects.HomeScreen;
 import tests.BaseTest;
 import utils.SwipeHelper;
 

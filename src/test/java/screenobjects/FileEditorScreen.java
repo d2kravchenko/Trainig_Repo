@@ -1,11 +1,11 @@
-package screenObjects;
+package screenobjects;
 
 import aquality.appium.mobile.application.AqualityServices;
 import aquality.appium.mobile.elements.interfaces.IButton;
 import aquality.appium.mobile.elements.interfaces.ITextBox;
 import aquality.appium.mobile.screens.Screen;
 import org.openqa.selenium.By;
-import screenObjects.constants.ATTRIBUTE;
+import screenobjects.constants.Attribute;
 
 import java.time.Duration;
 
@@ -36,7 +36,7 @@ public class FileEditorScreen extends Screen {
         closeButton.click();
     }
     public String getText(){
-        return  editorTextBox.getAttribute(ATTRIBUTE.TEXT);
+        return  editorTextBox.getAttribute(Attribute.TEXT.getValue());
     }
 
 }
