@@ -1,4 +1,4 @@
-package steps;
+package tests.steps;
 
 import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.core.utilities.ISettingsFile;
@@ -11,7 +11,7 @@ import models.UserModel;
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
 import org.testng.Assert;
-import steps.constants.Endpoint;
+import tests.steps.constants.Endpoint;
 import utils.GenerateData;
 import utils.JSONConverter;
 import utils.SearchHelper;

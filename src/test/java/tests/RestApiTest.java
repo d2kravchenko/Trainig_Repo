@@ -1,6 +1,8 @@
+package tests;
+
 import aquality.selenium.browser.AqualityServices;
 import org.testng.annotations.Test;
-import steps.RestApiTestSteps;
+import tests.steps.RestApiTestSteps;
 
 public class RestApiTest {
 

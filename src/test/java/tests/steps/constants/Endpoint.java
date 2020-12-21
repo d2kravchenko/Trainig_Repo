@@ -1,4 +1,4 @@
-package steps.constants;
+package tests.steps.constants;
 
 public enum Endpoint {
     POSTS("posts"),
