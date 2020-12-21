@@ -1,11 +1,11 @@
-package screenObjects;
+package screenobjects;
 
 import aquality.appium.mobile.actions.SwipeDirection;
 import aquality.appium.mobile.application.AqualityServices;
 import aquality.appium.mobile.elements.interfaces.ILabel;
 import aquality.appium.mobile.screens.Screen;
-import models.MItem;
-import models.MSeller;
+import models.ItemModel;
+import models.SellerModel;
 import org.openqa.selenium.By;
 import utils.StringHelper;
 
@@ -27,8 +27,8 @@ public class ItemScreen extends Screen {
     private final ILabel sellerNameLabel = AqualityServices.getElementFactory().getLabel(By.id(ID_SELLER_NAME_LABEL), "Seller Name label");
     private final ILabel sellerCityLabel = AqualityServices.getElementFactory().getLabel(By.id(ID_SELLER_CITY_LABEL), "Seller City label");
 
-    public MItem parseItemData(){
-        MItem item = new MItem();
+    public ItemModel parseItemData(){
+        ItemModel item = new ItemModel();
         item.setBrand(itemBrandLabel.getAttribute(ATTRIBUTE.TEXT));
         discountPercentLabel.getTouchActions().scrollToElement(SwipeDirection.DOWN);
         String newPrice = newPriceLabel.getAttribute(ATTRIBUTE.TEXT);    // String is like "Price: 9999 USD"
@@ -37,9 +37,9 @@ public class ItemScreen extends Screen {
         item.setDiscount(discountPercentLabel.getAttribute(ATTRIBUTE.TEXT));
         return item;
     }
-    public MSeller parseSellerData(){
+    public SellerModel parseSellerData(){
         sellerNameLabel.getTouchActions().scrollToElement(SwipeDirection.UP);
-        MSeller seller = new MSeller();
+        SellerModel seller = new SellerModel();
         seller.setName(sellerNameLabel.getAttribute(ATTRIBUTE.TEXT));
         seller.setCity(sellerCityLabel.getAttribute(ATTRIBUTE.TEXT));
         return seller;

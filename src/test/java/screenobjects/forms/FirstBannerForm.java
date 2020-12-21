@@ -1,11 +1,11 @@
-package screenObjects.forms;
+package screenobjects.forms;
 
 import aquality.appium.mobile.application.AqualityServices;
 import aquality.appium.mobile.elements.interfaces.ILabel;
 import aquality.appium.mobile.screens.Screen;
-import models.MItem;
+import models.ItemModel;
 import org.openqa.selenium.By;
-import screenObjects.ATTRIBUTE;
+import screenobjects.ATTRIBUTE;
 
 public class FirstBannerForm extends Screen {
     public FirstBannerForm(){
@@ -23,8 +23,8 @@ public class FirstBannerForm extends Screen {
     private final ILabel discountPercentLabel = baseLabel.findChildElement(By.id(ID_DISCOUNT_PERCENT_LABEL), "Discount % label", ILabel.class);
     private final ILabel itemBrandLabel = baseLabel.findChildElement(By.id(ID_ITEM_BRAND_LABEL), "Item name label", ILabel.class);
 
-    public MItem parseFirstItemData(){
-        MItem firstItem = new MItem();
+    public ItemModel parseFirstItemData(){
+        ItemModel firstItem = new ItemModel();
         firstItem.setBrand(itemBrandLabel.getAttribute(ATTRIBUTE.TEXT));
         firstItem.setOldPrice(oldPriceLabel.getAttribute(ATTRIBUTE.TEXT));
         firstItem.setNewPrice(newPriceLabel.getAttribute(ATTRIBUTE.TEXT));

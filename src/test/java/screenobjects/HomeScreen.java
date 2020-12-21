@@ -1,11 +1,11 @@
-package screenObjects;
+package screenobjects;
 
 import aquality.appium.mobile.application.AqualityServices;
 import aquality.appium.mobile.elements.interfaces.ILabel;
 import aquality.appium.mobile.screens.Screen;
-import models.MItem;
+import models.ItemModel;
 import org.openqa.selenium.By;
-import screenObjects.forms.FirstBannerForm;
+import screenobjects.forms.FirstBannerForm;
 
 public class HomeScreen extends Screen {
     public HomeScreen() { super(By.id("tvTitle"), "Home  screen");  }
@@ -30,7 +30,7 @@ public class HomeScreen extends Screen {
     public boolean isOpened(){
         return this.state().isExist();
     }
-    public MItem getFirstItem(){
+    public ItemModel getFirstItem(){
         return getFirstBannerForm().parseFirstItemData();
     }
     public void selectFirstItem(){

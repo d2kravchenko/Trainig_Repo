@@ -1,4 +1,4 @@
-package screenObjects;
+package screenobjects;
 
 import aquality.appium.mobile.application.AqualityServices;
 import aquality.appium.mobile.elements.interfaces.ILabel;

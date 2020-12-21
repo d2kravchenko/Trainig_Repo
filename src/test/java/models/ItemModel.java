@@ -4,7 +4,7 @@ import lombok.*;
 
 @Data
 @NoArgsConstructor
-public class MItem {
+public class ItemModel {
     private String brand, oldPrice, newPrice, discount;
 }
 

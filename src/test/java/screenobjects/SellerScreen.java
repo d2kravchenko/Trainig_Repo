@@ -1,13 +1,10 @@
-package screenObjects;
+package screenobjects;
 
-import aquality.appium.mobile.actions.SwipeDirection;
 import aquality.appium.mobile.application.AqualityServices;
 import aquality.appium.mobile.elements.interfaces.ILabel;
 import aquality.appium.mobile.screens.Screen;
-import models.MItem;
-import models.MSeller;
+import models.SellerModel;
 import org.openqa.selenium.By;
-import utils.StringHelper;
 
 public class SellerScreen extends Screen {
     public SellerScreen(){
@@ -23,7 +20,7 @@ public class SellerScreen extends Screen {
         return AqualityServices.getElementFactory().getLabel(By.xpath(String.format(XPATH_DYNAMIC_SELLER_NAME_LABEL, name)), "Seller " + name);
     }
 
-    public boolean isSellerDataCorrect(MSeller expectedSeller){
+    public boolean isSellerDataCorrect(SellerModel expectedSeller){
         return sellerCityLabel.getAttribute(ATTRIBUTE.TEXT).equals(expectedSeller.getCity()) && getSellerNameLabel(expectedSeller.getName()).state().isExist();
     }
 

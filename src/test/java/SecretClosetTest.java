@@ -1,15 +1,15 @@
 import aquality.selenium.core.utilities.ISettingsFile;
 import aquality.selenium.core.utilities.JsonSettingsFile;
-import models.MItem;
-import models.MSeller;
+import models.ItemModel;
+import models.SellerModel;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import aquality.appium.mobile.application.AqualityServices;
 import org.testng.annotations.Test;
-import screenObjects.HomeScreen;
-import screenObjects.ItemScreen;
-import screenObjects.SelectCityScreen;
-import screenObjects.SellerScreen;
+import screenobjects.HomeScreen;
+import screenobjects.ItemScreen;
+import screenobjects.SelectCityScreen;
+import screenobjects.SellerScreen;
 import utils.Alerts;
 
 public class SecretClosetTest {
@@ -23,7 +23,7 @@ public class SecretClosetTest {
     }
 
     @Test
-    public void secretClosetTest() throws InterruptedException {
+    public void secretClosetTest() {
         AqualityServices.getLogger().info("Starting SecretCloset test");
 
         AqualityServices.getLogger().info("1. Click on city label");
@@ -38,16 +38,16 @@ public class SecretClosetTest {
 
         AqualityServices.getLogger().info("4. Check that city \"%s\" is selected as Region", CITY_NAME);
         Assert.assertTrue(homeScreen.isCityNameCorrect(CITY_NAME), String.format("City \"%s\" is not selected (names do not match)", CITY_NAME));
-        MItem firstItem = homeScreen.getFirstItem();
+        ItemModel firstItem = homeScreen.getFirstItem();
 
         AqualityServices.getLogger().info("5. Select first item with discount");
         homeScreen.selectFirstItem();
         ItemScreen itemScreen = new ItemScreen();
-        MItem selectedItem = itemScreen.parseItemData();
+        ItemModel selectedItem = itemScreen.parseItemData();
 
         AqualityServices.getLogger().info("6, 7. Check that selected item is displaying, check that old price, discount and price with discount are correct");
         Assert.assertEquals(firstItem, selectedItem, "Items data do not match");
-        MSeller itemScreenSeller = itemScreen.parseSellerData();
+        SellerModel itemScreenSeller = itemScreen.parseSellerData();
 
         AqualityServices.getLogger().info("8. Click on seller");
         itemScreen.selectSeller();
