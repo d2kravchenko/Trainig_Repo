@@ -1,4 +1,4 @@
-package steps;
+package tests.steps;
 
 import aquality.appium.mobile.application.AqualityServices;
 import aquality.selenium.core.utilities.ISettingsFile;

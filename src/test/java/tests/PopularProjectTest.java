@@ -1,7 +1,9 @@
+package tests;
+
 import aquality.appium.mobile.application.AqualityServices;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
-import steps.PopularProjectTestSteps;
+import tests.steps.PopularProjectTestSteps;
 
 public class PopularProjectTest {
 
