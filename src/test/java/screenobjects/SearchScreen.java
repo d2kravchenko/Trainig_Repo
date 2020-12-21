@@ -5,11 +5,12 @@ import aquality.appium.mobile.elements.interfaces.ILabel;
 import aquality.appium.mobile.elements.interfaces.ITextBox;
 import aquality.appium.mobile.screens.Screen;
 import org.openqa.selenium.By;
+import screenobjects.constants.Attribute;
 
 public class SearchScreen extends Screen {
 
     public SearchScreen() {
-        super(By.xpath("//android.view.ViewGroup[@resource-id = 'com.kickstarter.kickstarter:id/search_toolbar']"), "Search screen");
+        super(By.id("search_toolbar"), "Search screen");
     }
 
     private final int MAX_NAME_SIZE = 15;

@@ -1,4 +1,4 @@
-package screenobjects;
+package screenobjects.constants;
 
 public enum Attribute {
     TEXT ("text"),

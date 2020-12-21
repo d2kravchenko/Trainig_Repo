@@ -1,6 +1,6 @@
 package screenobjects.forms;
 
-import screenobjects.Attribute;
+import screenobjects.constants.Attribute;
 import aquality.appium.mobile.actions.SwipeDirection;
 import aquality.appium.mobile.application.AqualityServices;
 import aquality.appium.mobile.elements.interfaces.IButton;

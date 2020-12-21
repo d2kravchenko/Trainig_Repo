@@ -6,6 +6,10 @@ import org.openqa.selenium.Point;
 
 public class SwipeUtils {
 
+
+    /* *****************************************
+    Swipe in center of screen from right to left
+    *******************************************/
     public static void swipeToRightTab(){
         double startPointX = 0.9;
         double startPointY = 0.5;

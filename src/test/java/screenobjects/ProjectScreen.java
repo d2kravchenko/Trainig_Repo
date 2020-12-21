@@ -4,11 +4,12 @@ import aquality.appium.mobile.application.AqualityServices;
 import aquality.appium.mobile.elements.interfaces.ILabel;
 import aquality.appium.mobile.screens.Screen;
 import org.openqa.selenium.By;
+import screenobjects.constants.Attribute;
 
 public class ProjectScreen extends Screen {
 
     public ProjectScreen() {
-        super(By.xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id = 'com.kickstarter.kickstarter:id/project_recycler_view']"), "Project screen");
+        super(By.id("project_recycler_view"), "Project screen");
     }
     private final int DATE_STRING_CUT_START_INDEX = 31; // String example -> This project will be funded on |->Dec 31, 2020 2:41 PM.
     private final int DATE_STRING_CUT_END_INDEX = -3;   // String example -> This project will be funded on Dec 31, 2020 2:41<-| PM.

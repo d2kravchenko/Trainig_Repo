@@ -5,7 +5,7 @@ import aquality.appium.mobile.application.AqualityServices;
 import aquality.appium.mobile.elements.interfaces.ILabel;
 import aquality.appium.mobile.screens.Screen;
 import org.openqa.selenium.By;
-import screenobjects.Attribute;
+import screenobjects.constants.Attribute;
 
 public class PopularScreenItemForm extends Screen {
 
