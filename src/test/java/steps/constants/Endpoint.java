@@ -1,12 +1,12 @@
-package steps;
+package steps.constants;
 
-public enum Endpoints  {
+public enum Endpoint {
     POSTS("posts"),
     USERS("users");
 
     private final String value;
 
-    Endpoints(String value){
+    Endpoint(String value){
         this.value = value;
     }
 

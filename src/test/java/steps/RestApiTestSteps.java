@@ -6,11 +6,12 @@ import aquality.selenium.core.utilities.JsonSettingsFile;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import models.PostModel;
-import models.ModelFields;
+import models.constants.ModelField;
 import models.UserModel;
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
 import org.testng.Assert;
+import steps.constants.Endpoint;
 import utils.GenerateData;
 import utils.JSONConverter;
 import utils.SearchHelper;
@@ -36,9 +37,9 @@ public class RestApiTestSteps {
 
     public static void allPostsTest(){
 
-        AqualityServices.getLogger().info("Sending GET-request to receive all posts from %s", Endpoints.POSTS);
+        AqualityServices.getLogger().info("Sending GET-request to receive all posts from %s", Endpoint.POSTS);
         AqualityServices.getLogger().info("Checking that status code is %d, format is JSON and list sorted natural by id", HttpStatus.SC_OK);
-        ValidatableResponse vResponse = Request.get(Endpoints.POSTS.format())
+        ValidatableResponse vResponse = Request.get(Endpoint.POSTS.format())
                 .statusCode(HttpStatus.SC_OK)
                 .contentType(ContentType.JSON);
         Assert.assertTrue(SortHelper.isSortedNaturalById(vResponse), "The list is not sorted correctly");
@@ -47,36 +48,36 @@ public class RestApiTestSteps {
     public static void existingPostTest(){
         AqualityServices.getLogger().info("Sending GET-request to receive #%d post (existing)", EXISTING_POST_ID);
         AqualityServices.getLogger().info("Checking that status code is %d, userId = %d, id = %d, title and body is not blank", HttpStatus.SC_OK, EXPECTED_RECEIVED_POST.getUserId(), EXPECTED_RECEIVED_POST.getId());
-        Request.get(Endpoints.POSTS.format(String.valueOf(EXISTING_POST_ID)))
+        Request.get(Endpoint.POSTS.format(String.valueOf(EXISTING_POST_ID)))
                 .statusCode(HttpStatus.SC_OK).and()
-                .body(ModelFields.POST_USER_ID.getValue(), Matchers.is(EXPECTED_RECEIVED_POST.getUserId()))
-                .body(ModelFields.POST_ID.getValue(), Matchers.is(EXPECTED_RECEIVED_POST.getId()))
-                .body(ModelFields.POST_TITLE.getValue(), Matchers.not(Matchers.blankString()))
-                .body(ModelFields.POST_BODY.getValue(), Matchers.not(Matchers.blankString()));
+                .body(ModelField.POST_USER_ID.getValue(), Matchers.is(EXPECTED_RECEIVED_POST.getUserId()))
+                .body(ModelField.POST_ID.getValue(), Matchers.is(EXPECTED_RECEIVED_POST.getId()))
+                .body(ModelField.POST_TITLE.getValue(), Matchers.not(Matchers.blankString()))
+                .body(ModelField.POST_BODY.getValue(), Matchers.not(Matchers.blankString()));
     }
 
     public static void nonExistingPostTest(){
         AqualityServices.getLogger().info("Sending GET-request to receive #%d post (non existing)", NON_EXISTING_POST_ID);
         AqualityServices.getLogger().info("Checking that status code is %d and JSON body is blank", HttpStatus.SC_NOT_FOUND);
-        Request.get(Endpoints.POSTS.format(String.valueOf(NON_EXISTING_POST_ID)))
+        Request.get(Endpoint.POSTS.format(String.valueOf(NON_EXISTING_POST_ID)))
                 .statusCode(HttpStatus.SC_NOT_FOUND).body(Matchers.is(EMPTY_JSON_BODY));
     }
 
     public static void postPostTest(){
-        AqualityServices.getLogger().info("Sending POST-request to %s", Endpoints.POSTS);
+        AqualityServices.getLogger().info("Sending POST-request to %s", Endpoint.POSTS);
         AqualityServices.getLogger().info("Checking that status code is %d, title, body and userId matches what we passed in the request, id is present in the response.", HttpStatus.SC_CREATED);
-        Request.post(Endpoints.POSTS.format(), POSTING_POST)
+        Request.post(Endpoint.POSTS.format(), POSTING_POST)
                 .statusCode(HttpStatus.SC_CREATED)
-                .body(ModelFields.POST_USER_ID.getValue(), Matchers.is(POSTING_POST.getUserId()))
-                .body(ModelFields.POST_ID.getValue(), Matchers.not(Matchers.blankOrNullString()))
-                .body(ModelFields.POST_TITLE.getValue(), Matchers.is(POSTING_POST.getTitle()))
-                .body(ModelFields.POST_BODY.getValue(), Matchers.is(POSTING_POST.getBody()));
+                .body(ModelField.POST_USER_ID.getValue(), Matchers.is(POSTING_POST.getUserId()))
+                .body(ModelField.POST_ID.getValue(), Matchers.not(Matchers.blankOrNullString()))
+                .body(ModelField.POST_TITLE.getValue(), Matchers.is(POSTING_POST.getTitle()))
+                .body(ModelField.POST_BODY.getValue(), Matchers.is(POSTING_POST.getBody()));
     }
 
     public static void allUsersAndIndividualUserTest(){
-        AqualityServices.getLogger().info("Sending GET-request to receive all USERS from %s", Endpoints.USERS);
+        AqualityServices.getLogger().info("Sending GET-request to receive all USERS from %s", Endpoint.USERS);
         AqualityServices.getLogger().info("Checking that status code is %d, format is JSON, title, body and userId matches what we passed in the request, id is present in the response.", HttpStatus.SC_OK);
-        ValidatableResponse vResponse = Request.get(Endpoints.USERS.format())
+        ValidatableResponse vResponse = Request.get(Endpoint.USERS.format())
                 .statusCode(HttpStatus.SC_OK)
                 .contentType(ContentType.JSON);
         UserModel[] users = vResponse.extract().as(UserModel[].class);
@@ -86,7 +87,7 @@ public class RestApiTestSteps {
         // step 6 is linked to step 5
         AqualityServices.getLogger().info("Sending GET-request to receive #%d User (existing)", EXISTING_USER_ID);
         AqualityServices.getLogger().info("Checking that status code is %d and User data matches the data obtained previously.", HttpStatus.SC_OK);
-        vResponse = Request.get(Endpoints.USERS.format(String.valueOf(EXISTING_USER_ID)))
+        vResponse = Request.get(Endpoint.USERS.format(String.valueOf(EXISTING_USER_ID)))
                 .statusCode(HttpStatus.SC_OK);
         UserModel userFoundedDirectly = vResponse.extract().as(UserModel.class);
         Assert.assertEquals(userFoundedDirectly, userFoundedFromAllUsers, "<Users are not equal>");

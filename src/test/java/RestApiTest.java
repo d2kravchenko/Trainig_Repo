@@ -1,7 +1,6 @@
-package steps;
-
 import aquality.selenium.browser.AqualityServices;
 import org.testng.annotations.Test;
+import steps.RestApiTestSteps;
 
 public class RestApiTest {
 
@@ -14,7 +13,6 @@ public class RestApiTest {
         RestApiTestSteps.nonExistingPostTest();
         RestApiTestSteps.postPostTest();
         RestApiTestSteps.allUsersAndIndividualUserTest();
-
     }
 }
 

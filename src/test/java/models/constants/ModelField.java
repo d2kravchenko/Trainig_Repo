@@ -1,6 +1,6 @@
-package models;
+package models.constants;
 
-public enum ModelFields {
+public enum ModelField {
     POST_USER_ID("userId"),
     POST_ID("id"),
     POST_TITLE("title"),
@@ -8,7 +8,7 @@ public enum ModelFields {
 
     private final String value;
 
-    ModelFields(String value){
+    ModelField(String value){
         this.value = value;
     }
 
