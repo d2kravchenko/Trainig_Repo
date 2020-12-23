@@ -17,8 +17,6 @@ public class BaseTest {
 
     @AfterTest
     public static void closeBrowser()  {
-
-        System.out.println("CLOSING BROWSER");
         AqualityServices.getBrowser().quit();
     }
 

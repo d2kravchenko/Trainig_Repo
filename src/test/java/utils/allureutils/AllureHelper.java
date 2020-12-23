@@ -45,8 +45,6 @@ public class AllureHelper {
     }
 
     public static void allureEnvironmentWriter(ImmutableMap<String, String> environmentValuesSet)  {
-
-
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
