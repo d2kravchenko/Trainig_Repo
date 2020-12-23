@@ -50,7 +50,6 @@ public class AllureHelper {
         Allure.description(allureSettingFile.getValue(String.format(ALLURE_DATA_DESCRIPTION_NODE, methodName)).toString());
     }
     public static void setAllureLink(ITestResult result){
-        String methodName = result.getMethod().getMethodName(); //Not sure what to attach to. To the name of a method, class, test name, or something else.
         ISettingsFile allureSettingFile = new JsonSettingsFile(TEST_CONFIG_FILE_NAME);
         String link = allureSettingFile.getValue(ALLURE_DATA_LINK_NODE).toString();
         Allure.link(link);
