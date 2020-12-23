@@ -12,21 +12,13 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
+        System.out.println("GETTING SCREENSHOT");
         AllureHelper.attachScreenshot(AqualityServices.getBrowser().getScreenshot());
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
+        System.out.println("GETTING SCREENSHOT");
         AllureHelper.attachScreenshot(AqualityServices.getBrowser().getScreenshot());
-    }
-
-
-    @Override
-    public void onTestStart(ITestResult result) {
-        String methodName = result.getMethod().getMethodName(); //Not sure what to attach to. To the name of a method, class, test name, or something else.
-        ISettingsFile allureSettingFile = new JsonSettingsFile("allureData.json");
-        Allure.description(allureSettingFile.getValue(String.format("/%s/Description", methodName)).toString());
-        String link = allureSettingFile.getValue(String.format("/%s/Link", methodName)).toString();
-        Allure.link(link);
     }
 }
