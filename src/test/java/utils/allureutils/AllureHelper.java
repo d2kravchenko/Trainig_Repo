@@ -19,17 +19,23 @@ import java.nio.file.Files;
 
 public class AllureHelper {
 
+    //copyAllureCategories
+    private static final String CATEGORIES_SOURCE_PATH = "src\\test\\resources\\categories.json";
+    private static final String CATEGORIES_DESTINATION_PATH = "target\\allure-results\\categories.json";
+
+    //allureEnvironmentWriter
+    private static final String ALLURE_RESULTS_DIR = "/target/allure-results";
+    private static final String ENVIRONMENT_PATH = "/target/allure-results/environment.xml";
+
     @Attachment(value = "Page screenshot", type = "image/png")
     public static byte[] attachScreenshot(){
         return AqualityServices.getBrowser().getScreenshot();
     }
 
     public static void copyAllureCategories(){
-        String sourcePath = "src\\test\\resources\\categories.json";
-        String destinationPath = "target\\allure-results\\categories.json";
 
-        File destinationFile = new File(destinationPath);
-        File sourceFile = new File(sourcePath);
+        File sourceFile = new File(CATEGORIES_SOURCE_PATH);
+        File destinationFile = new File(CATEGORIES_DESTINATION_PATH);
         try {
             Files.copy(sourceFile.toPath(), destinationFile.toPath());
         } catch (IOException e) {
@@ -38,8 +44,7 @@ public class AllureHelper {
     }
 
     public static void allureEnvironmentWriter(ImmutableMap<String, String> environmentValuesSet)  {
-        String allureResultsDirPath = "/target/allure-results";
-        String destinationPath = "/target/allure-results/environment.xml";
+
 
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -63,46 +68,11 @@ public class AllureHelper {
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
             File allureResultsDir = new File( System.getProperty("user.dir")
-                    + allureResultsDirPath);
+                    + ALLURE_RESULTS_DIR);
             if (!allureResultsDir.exists()) allureResultsDir.mkdirs();
             StreamResult result = new StreamResult(
                     new File( System.getProperty("user.dir")
-                            + destinationPath));
-            transformer.transform(source, result);
-            AqualityServices.getLogger().info("Allure environment data saved.");
-        } catch (ParserConfigurationException | TransformerException pce) {
-            AqualityServices.getLogger().warn(pce.getMessage());
-        }
-    }
-
-
-    public static void allureEnvironmentWriter(ImmutableMap<String, String> environmentValuesSet,
-                                               String customResultsPath)  {
-        try {
-            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-            Document doc = docBuilder.newDocument();
-            Element environment = doc.createElement("environment");
-            doc.appendChild(environment);
-            environmentValuesSet.forEach((k, v) -> {
-                Element parameter = doc.createElement("parameter");
-                Element key = doc.createElement("key");
-                Element value = doc.createElement("value");
-                key.appendChild(doc.createTextNode(k));
-                value.appendChild(doc.createTextNode(v));
-                parameter.appendChild(key);
-                parameter.appendChild(value);
-                environment.appendChild(parameter);
-            });
-
-            // write the content into xml file
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource(doc);
-            File allureResultsDir = new File(customResultsPath);
-            if (!allureResultsDir.exists()) allureResultsDir.mkdirs();
-            StreamResult result = new StreamResult(
-                    new File( customResultsPath + "environment.xml"));
+                            + ENVIRONMENT_PATH));
             transformer.transform(source, result);
             AqualityServices.getLogger().info("Allure environment data saved.");
         } catch (ParserConfigurationException | TransformerException pce) {

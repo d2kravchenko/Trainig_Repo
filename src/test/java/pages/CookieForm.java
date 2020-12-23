@@ -11,15 +11,9 @@ public class CookieForm extends Form {
 
     public CookieForm(){  super(By.xpath("//div[@class = 'cookies']"), "Cookies Form"); }
 
-    /*Xpath*/
+    private final String XPATH_BUTTON_NO = "//button[contains(text(), 'Not really, no')]";
 
-    private final String XPATH_BUTTON_No = "//button[contains(text(), 'Not really, no')]";
-
-    /*Elements*/
-
-    private final IButton NoButton = AqualityServices.getElementFactory().getButton(By.xpath(XPATH_BUTTON_No), "\"No\" Button ");
-
-    /*Methods*/
+    private final IButton NoButton = AqualityServices.getElementFactory().getButton(By.xpath(XPATH_BUTTON_NO), "\"No\" Button ");
 
     public boolean isCookiesFormExists(){ return this.getFormLabel().state().waitForDisplayed(Duration.ofSeconds(2)); }
 

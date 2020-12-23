@@ -11,15 +11,7 @@ public class TimerForm extends Form {
         super(By.xpath("//div[@class = 'timer timer--white timer--center']"), "Timer Form");
     }
 
-    /*Xpath*/
-
-    /*Elements*/
-
     private final ILabel TimerLabel = AqualityServices.getElementFactory().getLabel(this.getLocator(), "Timer Label");
-
-
-    /*Methods*/
-
 
     public String getTimerValue() {
         return TimerLabel.getText();
