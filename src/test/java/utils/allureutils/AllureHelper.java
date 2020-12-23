@@ -49,7 +49,7 @@ public class AllureHelper {
         ISettingsFile allureSettingFile = new JsonSettingsFile(ALLURE_DATA_FILE_NAME);
         Allure.description(allureSettingFile.getValue(String.format(ALLURE_DATA_DESCRIPTION_NODE, methodName)).toString());
     }
-    public static void setAllureLink(ITestResult result){
+    public static void setAllureLink(){
         ISettingsFile allureSettingFile = new JsonSettingsFile(TEST_CONFIG_FILE_NAME);
         String link = allureSettingFile.getValue(ALLURE_DATA_LINK_NODE).toString();
         Allure.link(link);
