@@ -16,6 +16,7 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 public class AllureHelper {
 
@@ -27,9 +28,9 @@ public class AllureHelper {
     private static final String ALLURE_RESULTS_DIR = "/target/allure-results";
     private static final String ENVIRONMENT_PATH = "/target/allure-results/environment.xml";
 
-    @Attachment(value = "Page screenshot", type = "image/png")
-    public static byte[] attachScreenshot(){
-        return AqualityServices.getBrowser().getScreenshot();
+    @Attachment(value = "Page screenshot", type = "image/png", fileExtension = "png")
+    public static byte[] attachScreenshot(byte[] screenshot){
+        return screenshot;
     }
 
     public static void copyAllureCategories(){
@@ -37,7 +38,7 @@ public class AllureHelper {
         File sourceFile = new File(CATEGORIES_SOURCE_PATH);
         File destinationFile = new File(CATEGORIES_DESTINATION_PATH);
         try {
-            Files.copy(sourceFile.toPath(), destinationFile.toPath());
+            Files.copy(sourceFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
         }

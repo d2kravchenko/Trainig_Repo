@@ -15,7 +15,7 @@
         </classes>
     </test> <!-- Test -->
 
-    <test name="Timer Test">
+    <test name="Timer Begin From Zero Test">
         <classes>
             <class name="tests.TimerBeginFromZeroTest"/>
         </classes>
