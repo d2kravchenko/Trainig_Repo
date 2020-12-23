@@ -33,7 +33,8 @@ public class AllureHelper {
     private static final String ENVIRONMENT_PATH = "/target/allure-results/environment.xml";
 
     //allureInit
-    private static final String ALLURE_DATA_FILE_NAME = "allureData.json";
+    private static final String ALLURE_DATA_FILE_NAME = "alluredata.json";
+    private static final String TEST_CONFIG_FILE_NAME = "testconfig.json";
     private static final String ALLURE_DATA_DESCRIPTION_NODE = "/%s/Description";
     private static final String ALLURE_DATA_LINK_NODE = "/%s/Link";
 
@@ -43,11 +44,15 @@ public class AllureHelper {
     }
 
 
-    public static void setAllureLinkAndDescription(ITestResult result){
+    public static void setAllureDescription(ITestResult result){
         String methodName = result.getMethod().getMethodName(); //Not sure what to attach to. To the name of a method, class, test name, or something else.
         ISettingsFile allureSettingFile = new JsonSettingsFile(ALLURE_DATA_FILE_NAME);
         Allure.description(allureSettingFile.getValue(String.format(ALLURE_DATA_DESCRIPTION_NODE, methodName)).toString());
-        String link = allureSettingFile.getValue(String.format(ALLURE_DATA_LINK_NODE, methodName)).toString();
+    }
+    public static void setAllureLink(ITestResult result){
+        String methodName = result.getMethod().getMethodName(); //Not sure what to attach to. To the name of a method, class, test name, or something else.
+        ISettingsFile allureSettingFile = new JsonSettingsFile(TEST_CONFIG_FILE_NAME);
+        String link = allureSettingFile.getValue(ALLURE_DATA_LINK_NODE).toString();
         Allure.link(link);
     }
 

@@ -19,6 +19,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult result) {
-        AllureHelper.setAllureLinkAndDescription(result);
+        AllureHelper.setAllureDescription(result);
+        AllureHelper.setAllureLink(result);
     }
 }
