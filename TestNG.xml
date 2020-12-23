@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Userinyerface tests">
+
+
+    <listeners>
+        <listener class-name="utils.allureutils.listeners.TestListener"/>
+        <listener class-name="utils.allureutils.listeners.SuiteListener"/>
+    </listeners>
+
+    <test name="Cookies Hiding Test">
+        <classes>
+            <class name="tests.CookieFormHidingTest"/>
+        </classes>
+    </test> <!-- Test -->
+
+    <test name="Timer Begin From Zero Test">
+        <classes>
+            <class name="tests.TimerBeginFromZeroTest"/>
+        </classes>
+    </test> <!-- Test -->
+
+</suite> <!-- Suite -->
+
