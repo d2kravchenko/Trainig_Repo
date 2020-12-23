@@ -1,0 +1,9 @@
+{
+  "cookieFormHidingTest": {
+    "Description": "The test checks that the cookie form successfully disappears from the page on closing"
+  },
+  "timerBeginFromZeroTest": {
+    "Description": "The test checks that timer on page starts from 11:11:11 (test always fails because timer starts from zero)"
+  }
+
+}
