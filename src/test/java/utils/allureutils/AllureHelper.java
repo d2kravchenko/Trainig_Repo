@@ -24,7 +24,7 @@ public class AllureHelper {
     private static final String CATEGORIES_SOURCE_PATH = "src\\test\\resources\\categories.json";
     private static final String CATEGORIES_DESTINATION_PATH = "target\\allure-results\\categories.json";
 
-    //allureEnvironmentWriter
+    //writeAllureEnvironment
     private static final String ALLURE_RESULTS_DIR = "/target/allure-results";
     private static final String ENVIRONMENT_PATH = "/target/allure-results/environment.xml";
 
@@ -44,7 +44,7 @@ public class AllureHelper {
         }
     }
 
-    public static void allureEnvironmentWriter(ImmutableMap<String, String> environmentValuesSet)  {
+    public static void writeAllureEnvironment(ImmutableMap<String, String> environmentValuesSet)  {
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
