@@ -10,10 +10,8 @@ public class HomePage extends Form {
     public HomePage() { super(By.xpath("//button[@class = 'start__button']"), "Home Page > Fake Start Button"); }
 
     private static final String XPATH_START_BUTTON = "//a[@class = 'start__link']";
-
     private static final IButton StartButton = AqualityServices.getElementFactory().getButton(By.xpath(XPATH_START_BUTTON), "Real Start button");
 
     public static void clickStartButton(){ StartButton.click(); }
-
     public static boolean pageOpened(){ return StartButton.getElement().isDisplayed();  }
 }

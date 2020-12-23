@@ -28,7 +28,7 @@ public class AllureHelper {
     private static final String ALLURE_RESULTS_DIR = "/target/allure-results";
     private static final String ENVIRONMENT_PATH = "/target/allure-results/environment.xml";
 
-    @Attachment(value = "Page screenshot", type = "image/png", fileExtension = "png")
+    @Attachment(value = "Page screenshot", type = "image/jpeg", fileExtension = "jpg")
     public static byte[] attachScreenshot(byte[] screenshot){
         return screenshot;
     }

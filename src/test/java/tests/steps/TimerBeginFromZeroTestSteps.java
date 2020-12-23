@@ -2,16 +2,15 @@ package tests.steps;
 
 import pages.HomePage;
 import pages.PasswdAndEmailForm;
-import pages.TimerForm;
 import aquality.selenium.browser.AqualityServices;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+import pages.forms.TimerForm;
 import tests.BaseTest;
 
 public class TimerBeginFromZeroTestSteps extends BaseTest {
 
-    private static final String ExpectedTimerValue = "11:11:11"; //This test must fail, timer start from 00:00:00
-    private static final TimerForm timerForm = new TimerForm();
+    private static final String EXPECTED_TIMER_VALUE = "11:11:11"; //This test must fail, timer start from 00:00:00
 
     @Step(value = "Open homepage. Check that page is opened.")
     public static void goToHomepage() {
@@ -25,6 +24,6 @@ public class TimerBeginFromZeroTestSteps extends BaseTest {
 
     @Step(value = "Check that timer starts from zero.")
     public static void checkCounter() {
-        Assert.assertEquals(timerForm.getTimerValue(), ExpectedTimerValue, "<Timer start not from " + ExpectedTimerValue + ">");
+        Assert.assertEquals(TimerForm.getTimerValue(), EXPECTED_TIMER_VALUE, String.format("<Timer start not from %s>", EXPECTED_TIMER_VALUE));
     }
 }

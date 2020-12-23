@@ -1,4 +1,4 @@
-package pages;
+package pages.forms;
 
 import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.elements.interfaces.ILabel;
@@ -11,9 +11,10 @@ public class TimerForm extends Form {
         super(By.xpath("//div[@class = 'timer timer--white timer--center']"), "Timer Form");
     }
 
-    private final ILabel TimerLabel = AqualityServices.getElementFactory().getLabel(this.getLocator(), "Timer Label");
+    private static final String XPATH_TIMER_LABEL = "//div[@class = 'timer timer--white timer--center']";
+    private static final ILabel TimerLabel = AqualityServices.getElementFactory().getLabel(By.xpath(XPATH_TIMER_LABEL), "Timer Label");
 
-    public String getTimerValue() {
+    public static String getTimerValue() {
         return TimerLabel.getText();
     }
 }
