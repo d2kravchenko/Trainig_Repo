@@ -1,8 +1,12 @@
 package utils.allureutils;
 
 import aquality.selenium.browser.AqualityServices;
+import aquality.selenium.core.utilities.ISettingsFile;
+import aquality.selenium.core.utilities.JsonSettingsFile;
 import com.google.common.collect.ImmutableMap;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
+import org.testng.ITestResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import javax.xml.parsers.DocumentBuilder;
@@ -24,17 +28,30 @@ public class AllureHelper {
     private static final String CATEGORIES_SOURCE_PATH = "src\\test\\resources\\categories.json";
     private static final String CATEGORIES_DESTINATION_PATH = "target\\allure-results\\categories.json";
 
-    //allureEnvironmentWriter
+    //writeAllureEnvironment
     private static final String ALLURE_RESULTS_DIR = "/target/allure-results";
     private static final String ENVIRONMENT_PATH = "/target/allure-results/environment.xml";
+
+    //allureInit
+    private static final String ALLURE_DATA_FILE_NAME = "allureData.json";
+    private static final String ALLURE_DATA_DESCRIPTION_NODE = "/%s/Description";
+    private static final String ALLURE_DATA_LINK_NODE = "/%s/Link";
 
     @Attachment(value = "Page screenshot", type = "image/jpeg", fileExtension = "jpg")
     public static byte[] attachScreenshot(byte[] screenshot){
         return screenshot;
     }
 
-    public static void copyAllureCategories(){
 
+    public static void setAllureLinkAndDescription(ITestResult result){
+        String methodName = result.getMethod().getMethodName(); //Not sure what to attach to. To the name of a method, class, test name, or something else.
+        ISettingsFile allureSettingFile = new JsonSettingsFile(ALLURE_DATA_FILE_NAME);
+        Allure.description(allureSettingFile.getValue(String.format(ALLURE_DATA_DESCRIPTION_NODE, methodName)).toString());
+        String link = allureSettingFile.getValue(String.format(ALLURE_DATA_LINK_NODE, methodName)).toString();
+        Allure.link(link);
+    }
+
+    public static void copyAllureCategories(){
         File sourceFile = new File(CATEGORIES_SOURCE_PATH);
         File destinationFile = new File(CATEGORIES_DESTINATION_PATH);
         try {
@@ -44,7 +61,7 @@ public class AllureHelper {
         }
     }
 
-    public static void allureEnvironmentWriter(ImmutableMap<String, String> environmentValuesSet)  {
+    public static void writeAllureEnvironment(ImmutableMap<String, String> environmentValuesSet)  {
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();

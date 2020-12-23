@@ -10,7 +10,7 @@ public class SuiteListener implements ISuiteListener {
 
     @Override
     public void onStart(ISuite suite) {
-        AllureHelper.allureEnvironmentWriter(
+        AllureHelper.writeAllureEnvironment(
                 ImmutableMap.<String, String>builder()
                         .put("Browser", AqualityServices.getBrowser().getBrowserName().toString())
                         .build());
