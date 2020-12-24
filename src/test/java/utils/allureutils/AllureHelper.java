@@ -36,7 +36,7 @@ public class AllureHelper {
     private static final String ALLURE_DATA_FILE_NAME = "alluredata.json";
     private static final String TEST_CONFIG_FILE_NAME = "testconfig.json";
     private static final String ALLURE_DATA_DESCRIPTION_NODE = "/%s/Description";
-    private static final String ALLURE_DATA_LINK_NODE = "/%s/Link";
+    private static final String ALLURE_DATA_LINK_NODE = "/Url/Homepage";
 
     @Attachment(value = "Page screenshot", type = "image/jpeg", fileExtension = "jpg")
     public static byte[] attachScreenshot(byte[] screenshot){
