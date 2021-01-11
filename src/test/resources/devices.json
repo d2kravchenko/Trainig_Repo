@@ -6,17 +6,5 @@
       "udid": "D99706D8-40F2-48D7-9E16-5703B426A0EE",
       "wdaLocalPort": "8081"
     }
-  },
-  "Android_Emulator": {
-    "capabilities": {
-      "deviceName": "Emulator_Android"
-    }
-  },
-  "Android_NAME": {
-    "capabilities": {
-      "deviceName": "Samsung",
-      "udid": "emulator-5554",
-      "systemPort": "4723"
-    }
   }
 }
