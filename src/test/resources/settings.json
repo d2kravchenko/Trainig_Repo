@@ -10,7 +10,8 @@
       "capabilities": {
         "platformName": "Android"
       }
-    },
+    }
+  },
     "ios": {
       "deviceKey": "iPhone_11",
       "isRemote": true,
@@ -20,8 +21,8 @@
         "platformName": "iOS",
         "automationName": "XCUITest"
       }
-    }
-  },
+    },
+
   "localServiceSettings": {
     "arguments": {
       "--allow-insecure": "chromedriver_autodownload"
