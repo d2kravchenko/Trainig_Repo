@@ -1,7 +1,7 @@
 {
   "platformName": "android",
   "isRemote": false,
-  "remoteConnectionUrl": "http://127.0.0.1:4723/wd/hub",
+  "remoteConnectionUrl": "172.20.69.49:4723/wd/hub",
   "screensLocation": "src/screenshots",
   "driverSettings": {
     "android": {
@@ -12,8 +12,10 @@
       }
     },
     "ios": {
-      "deviceKey": "emulator-5554",
-      "applicationPath": "./src/test/resources/apps/TestApp.app.zip",
+      "deviceKey": "iPhone_11",
+      "isRemote": true,
+      "remoteConnectionUrl": "http://127.0.0.1:4723/wd/hub",
+      "applicationPath": ".\\src\\test\\resources\\Kickstarter_ios.ipa",
       "capabilities": {
         "platformName": "iOS",
         "automationName": "XCUITest"

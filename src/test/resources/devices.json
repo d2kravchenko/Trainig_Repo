@@ -1,16 +1,10 @@
 {
-  "iOS_Simulator": {
+  "iPhone_11": {
     "capabilities": {
-      "platformVersion": "<iOS_platform_version>",
-      "deviceName": "<iOS_simulator_name>"
-    }
-  },
-  "iPhone_NAME": {
-    "capabilities": {
-      "platformVersion": "<iOS_platform_version>",
-      "deviceName": "<iOS_device_name>",
-      "udid": "<iOS_device_udidi>",
-      "wdaLocalPort": "<wda_local_port>"
+      "platformVersion": "13.6",
+      "deviceName": "iPhone_11",
+      "udid": "D99706D8-40F2-48D7-9E16-5703B426A0EE",
+      "wdaLocalPort": "8081"
     }
   },
   "Android_Emulator": {
