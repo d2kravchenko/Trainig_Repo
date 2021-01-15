@@ -1,28 +1,18 @@
 {
-  "platformName": "android",
-  "isRemote": false,
-  "remoteConnectionUrl": "172.20.69.49:4723/wd/hub",
+  "platformName": "iOS",
+  "isRemote": true,
+  "remoteConnectionUrl": "http://172.20.69.49:4723/wd/hub",
   "screensLocation": "src/screenshots",
   "driverSettings": {
-    "android": {
-      "deviceKey": "Android_Emulator",
-      "applicationPath": ".\\src\\test\\resources\\app.apk",
-      "capabilities": {
-        "platformName": "Android"
-      }
-    }
-  },
     "ios": {
       "deviceKey": "iPhone_11",
-      "isRemote": true,
-      "remoteConnectionUrl": "http://127.0.0.1:4723/wd/hub",
-      "applicationPath": ".\\src\\test\\resources\\Kickstarter_ios.ipa",
+      "applicationPath": "home/d2kravchenko/Desktop/Kickstarter.zip",
       "capabilities": {
         "platformName": "iOS",
         "automationName": "XCUITest"
       }
-    },
-
+    }
+  },
   "localServiceSettings": {
     "arguments": {
       "--allow-insecure": "chromedriver_autodownload"
