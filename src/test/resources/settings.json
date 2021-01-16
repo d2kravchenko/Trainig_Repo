@@ -1,0 +1,47 @@
+{
+  "platformName": "iOS",
+  "isRemote": true,
+  "remoteConnectionUrl": "http://172.20.69.49:4723/wd/hub",
+  "screensLocation": "src/screenshots",
+  "driverSettings": {
+    "ios": {
+      "deviceKey": "iPhone_11",
+      "applicationPath": "home/d2kravchenko/Desktop/Kickstarter.zip",
+      "capabilities": {
+        "platformName": "iOS",
+        "automationName": "XCUITest"
+      }
+    }
+  },
+  "localServiceSettings": {
+    "arguments": {
+      "--allow-insecure": "chromedriver_autodownload"
+    },
+    "capabilities": {
+    }
+  },
+  "timeouts": {
+    "timeoutImplicit": 0,
+    "timeoutCondition": 15,
+    "timeoutPollingInterval": 300,
+    "timeoutCommand": 120
+  },
+  "retry": {
+    "number": 2,
+    "pollingInterval": 300
+  },
+  "logger": {
+    "language": "en"
+  },
+  "elementCache": {
+    "isEnabled": true
+  },
+  "touchActions": {
+    "swipe": {
+      "duration": 1,
+      "retries": 5,
+      "verticalOffset": 0.2,
+      "horizontalOffset": 0.5
+    }
+  }
+}
